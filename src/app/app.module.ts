@@ -13,7 +13,12 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 
-import { AppComponent } from './app.component';
+/**
+ * App Containers
+ */
+import { AppComponent } from './containers/app.component';
+
+import { ComponentsModule } from './components';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ComponentsModule,
     StoreModule.provideStore({}),
     StoreDevtoolsModule.instrumentStore({
       monitor: useLogMonitor({
