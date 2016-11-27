@@ -1,9 +1,19 @@
-<div *ngIf="!items">
-  <h3>Loading Stories</h3>
+<div *ngIf="!items" class="loader-block">
+ <div class="loader">
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__ball"></div>
+</div>
 </div>
 
-<div *ngIf="items">
-  <li *ngFor="let item of items">
-    <hn-item [item]="item"></hn-item>
-  </li>
+<div *ngIf="items" class="container" style="background: #F6F6EF">
+  <ol>
+    <li *ngFor="let item of items">
+      <hn-item [item]="item"></hn-item>
+      <hr>
+    </li>
+  </ol>
 </div>
