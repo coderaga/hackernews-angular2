@@ -1,0 +1,18 @@
+#footer {
+  position: relative;
+  padding: 10px;
+  height: 60px;
+  border-top: 2px solid rgb(73, 53, 60);
+  letter-spacing: 0.7px;
+  text-align: center;
+
+  a {
+  	color: rgb(73, 53, 60);
+  	font-weight: bold;
+  	text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
