@@ -1,8 +1,12 @@
-$mobile-only: "only screen and (max-width : 768px)";
+.logo {
+    width: 60px;
+}
 
-#header{
-    background-color: deepskyblue;
-    color: white;
-    padding: 6px 0;
-    
+.breadcrumb {
+    background: rgb(73, 53, 60);
+    border-bottom: 0px;
+}
+
+.breadcrumb a {
+    color: white
 }
