@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { StoriesComponent } from './stories/stories.component';
+import { ItemComponent } from './item/item.component';
 // import { routing } from './app.routes';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { StoriesComponent } from './stories/stories.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    StoriesComponent
+    StoriesComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

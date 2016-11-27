@@ -4,6 +4,6 @@
 
 <div *ngIf="items">
   <li *ngFor="let item of items">
-    {{item | json}}
+    <hn-item [item]="item"></hn-item>
   </li>
 </div>
