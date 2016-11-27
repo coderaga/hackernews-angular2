@@ -1,0 +1,9 @@
+<div *ngIf="!items">
+  <h3>Loading Stories</h3>
+</div>
+
+<div *ngIf="items">
+  <li *ngFor="let item of items">
+    {{item | json}}
+  </li>
+</div>
