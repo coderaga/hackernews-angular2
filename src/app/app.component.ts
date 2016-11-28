@@ -6,13 +6,8 @@ import { Loader } from './services/loader';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent extends Loader {
+export class AppComponent {
   constructor(){
-    super(true);
-    setTimeout(()=>{
-      console.log("App Ready");
-      this.ready()
-    }, 10000);
   }
 
   ngOnInit(){
