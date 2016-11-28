@@ -13,6 +13,7 @@ export class StoriesEffect {
     
     @Effect() loadStories$ = this.actions$
         .ofType(stories.ActionTypes.LOAD_STORIES)
-        .switchMap((action)=> this.hackernewsApiService.retriveStories('news', 1))
+        .switchMap((action)=> this.hackernewsApiService
+            .retriveStories(action.payload['storiesType'], action.payload['pageNum']))
         .map(data => new stories.LoadStoriesCompleteAction(data));
 }

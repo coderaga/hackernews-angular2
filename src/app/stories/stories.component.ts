@@ -15,39 +15,37 @@ import * as storiesAction from '../actions/stories';
 })
 export class StoriesComponent implements OnInit {
   storiesType: any;
-  items;
+  items$: Observable<any>;
   pageNum;
-  dummyStories$: Observable<any>;
   constructor(private hackerNewsApi: HackerNewsApiService, 
               private route: ActivatedRoute,
               private store: Store<AppState>) {
-      this.dummyStories$ = this.store.select('stories');
+      this.items$ = this.store.select('stories');
       this.store.select('stories').map(
         (stories) => {
-          console.log("Dummy Stories is: ", this.dummyStories$);
-          this.dummyStories$ = Observable.apply(stories);
+          this.items$ = Observable.apply(stories);
         }
       )
    }
 
   ngOnInit() {
-    // this.route.data.subscribe(
-    //   (data) => this.storiesType = (data as any).storiesType
-    // );
+    setTimeout( () =>
+    {
+      this.route.data.subscribe(
+      (data) => this.storiesType = (data as any).storiesType
+    )
     
-    this.getStories();
-
-    // this.route.params.subscribe( params => {
-    //   this.pageNum = params['page'] ? +params['page'] : 1;
-    //   this.hackerNewsApi.retriveStories(this.storiesType, this.pageNum)
-    //   .subscribe(
-    //     items => this.items = items
-    //   );
-    // })
+    this.route.params.subscribe( params => {
+      this.pageNum = params['page'] ? +params['page'] : 1;
+      this.getStories(this.storiesType, this.pageNum);
+    })
+    }, 10000);
   }
 
-  getStories(){
-    this.store.dispatch(new storiesAction.LoadStoriesAction());
+  getStories(storiesType: string, pageNum: number){
+    this.store.dispatch(new storiesAction.LoadStoriesAction(
+      { 'storiesType': storiesType, 
+        'pageNum': pageNum
+      }));
   }
-
 }

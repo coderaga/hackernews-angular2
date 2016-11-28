@@ -9,17 +9,12 @@ export const ActionTypes = {
 
 export class LoadStoriesAction implements Action {
     type = ActionTypes.LOAD_STORIES;
-    constructor(){
-        console.log("Inside Action");
-    }
-    
+    constructor(public payload: {}){ }
 }
 
 export class LoadStoriesCompleteAction implements Action {
     type = ActionTypes.LOAD_STORES_COMPLETE;
-    constructor(public payload: any){
-        console.log("Inside Success Action");
-    }
+    constructor(public payload: any){ }
 }
 
 export type StoriesAction

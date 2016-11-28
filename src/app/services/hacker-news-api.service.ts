@@ -11,7 +11,7 @@ export class HackerNewsApiService {
       this.hnApiUrl = 'https://node-hnapi.herokuapp.com'; 
   }
 
-  retriveStories(storyType:string, page_id: number): Observable<any> {
+  retriveStories(storyType: string, page_id: number): Observable<any> {
     return this._http.get(`${this.hnApiUrl}/${storyType}?page=${page_id}`)
       .map(response => this.stories = response.json());
   }
