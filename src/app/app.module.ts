@@ -11,10 +11,12 @@ import { routing } from './app.routes';
  * NGRX Modules
  * ===============================
 */ 
-// import { StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 // Dev Tools
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+// Effects
+import { EffectsModule } from '@ngrx/effects';
 
 /**
  * App Containers
@@ -24,7 +26,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { StoriesComponent } from './stories/stories.component';
 import { ItemComponent } from './item/item.component';
-// import { routing } from './app.routes';
+
+// reducer
+import reducer from './reducers/index';
+import { StoriesEffect } from './effects/stories';
+
+// Services
+import { HackerNewsApiService } from './services/hacker-news-api.service';
+
+
 
 @NgModule({
   declarations: [
@@ -38,17 +48,18 @@ import { ItemComponent } from './item/item.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
-    // StoreModule.provideStore({}),
-    // StoreDevtoolsModule.instrumentStore({
-    //   monitor: useLogMonitor({
-    //     visible: true,
-    //     position: 'right'
-    //   })
-    // }),
-    // StoreLogMonitorModule
+    routing,
+    StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentStore({
+      monitor: useLogMonitor({
+        visible: true,
+        position: 'right'
+      })
+    }),
+    StoreLogMonitorModule,
+    EffectsModule.run(StoriesEffect)
   ],
-  providers: [],
+  providers: [HackerNewsApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
