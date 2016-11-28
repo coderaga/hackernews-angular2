@@ -29,9 +29,7 @@ export class StoriesComponent implements OnInit {
    }
 
   ngOnInit() {
-    setTimeout( () =>
-    {
-      this.route.data.subscribe(
+    this.route.data.subscribe(
       (data) => this.storiesType = (data as any).storiesType
     )
     
@@ -39,7 +37,6 @@ export class StoriesComponent implements OnInit {
       this.pageNum = params['page'] ? +params['page'] : 1;
       this.getStories(this.storiesType, this.pageNum);
     })
-    }, 10000);
   }
 
   getStories(storiesType: string, pageNum: number){

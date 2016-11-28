@@ -1,14 +1,4 @@
-<div *ngIf="!(items$ | async).length" class="loader-block">
- <div class="loader">
-  <div class="loader__bar"></div>
-  <div class="loader__bar"></div>
-  <div class="loader__bar"></div>
-  <div class="loader__bar"></div>
-  <div class="loader__bar"></div>
-  <div class="loader__ball"></div>
-</div>
-</div>
-<div *ngIf="(items$ | async).length" class="container" style="background: #F6F6EF">
+<div *ngIf="(items$ | async).length" class="container">
   <ol>
     <li *ngFor="let item of items$ | async">
       <hn-item [item]="item"></hn-item>
