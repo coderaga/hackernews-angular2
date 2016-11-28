@@ -30,9 +30,10 @@ import { ItemComponent } from './item/item.component';
 // reducer
 import reducer from './reducers/index';
 import { StoriesEffect } from './effects/stories';
-
+import { ItemDetailEffect } from './effects/item-detail';
 // Services
 import { HackerNewsApiService } from './services/hacker-news-api.service';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 
 
@@ -42,7 +43,8 @@ import { HackerNewsApiService } from './services/hacker-news-api.service';
     HeaderComponent,
     FooterComponent,
     StoriesComponent,
-    ItemComponent
+    ItemComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { HackerNewsApiService } from './services/hacker-news-api.service';
       })
     }),
     StoreLogMonitorModule,
-    EffectsModule.run(StoriesEffect)
+    EffectsModule.run(StoriesEffect),
+    EffectsModule.run(ItemDetailEffect)
   ],
   providers: [HackerNewsApiService],
   bootstrap: [AppComponent]

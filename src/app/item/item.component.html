@@ -1,4 +1,4 @@
 <a href="{{item.url}}" target="_blank">{{item.title}}</a>
 <p>
-{{item.points}} points by {{ item.user }}  {{ item.time_ago }} | {{item.comments_count}} comments
+{{item.points}} points by {{ item.user }}  {{ item.time_ago }} | <a [routerLink]="['/item', item.id]" routerLinkActive="active">{{item.comments_count}} comments </a>
 </p>

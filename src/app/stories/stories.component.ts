@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HackerNewsApiService} from '../services/hacker-news-api.service';
-import {ActivatedRoute} from '@angular/router';
+import { HackerNewsApiService } from '../services/hacker-news-api.service';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers/index';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import * as storiesAction from '../actions/stories';
 
 
@@ -17,26 +17,33 @@ export class StoriesComponent implements OnInit {
   storiesType: any;
   items;
   pageNum;
+  dummyStories$: Observable<any>;
   constructor(private hackerNewsApi: HackerNewsApiService, 
               private route: ActivatedRoute,
               private store: Store<AppState>) {
-
+      this.dummyStories$ = this.store.select('stories');
+      this.store.select('stories').map(
+        (stories) => {
+          console.log("Dummy Stories is: ", this.dummyStories$);
+          this.dummyStories$ = Observable.apply(stories);
+        }
+      )
    }
 
   ngOnInit() {
-    this.route.data.subscribe(
-      (data) => this.storiesType = (data as any).storiesType
-    );
+    // this.route.data.subscribe(
+    //   (data) => this.storiesType = (data as any).storiesType
+    // );
     
     this.getStories();
 
-    this.route.params.subscribe( params => {
-      this.pageNum = params['page'] ? +params['page'] : 1;
-      this.hackerNewsApi.retriveStories(this.storiesType, this.pageNum)
-      .subscribe(
-        items => this.items = items
-      );
-    })
+    // this.route.params.subscribe( params => {
+    //   this.pageNum = params['page'] ? +params['page'] : 1;
+    //   this.hackerNewsApi.retriveStories(this.storiesType, this.pageNum)
+    //   .subscribe(
+    //     items => this.items = items
+    //   );
+    // })
   }
 
   getStories(){

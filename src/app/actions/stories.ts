@@ -17,7 +17,7 @@ export class LoadStoriesAction implements Action {
 
 export class LoadStoriesCompleteAction implements Action {
     type = ActionTypes.LOAD_STORES_COMPLETE;
-    constructor(){
+    constructor(public payload: any){
         console.log("Inside Success Action");
     }
 }

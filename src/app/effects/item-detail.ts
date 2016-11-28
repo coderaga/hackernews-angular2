@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import  'rxjs/add/operator/map';
 import  'rxjs/add/operator/switchMap';
-import * as stories from '../actions/stories';
+import * as itemDetail from '../actions/item-detail';
 import { HackerNewsApiService } from '../services/hacker-news-api.service';
 
 
+
 @Injectable()
-export class StoriesEffect {
+export class ItemDetailEffect {
     constructor(private actions$: Actions,
                 private hackernewsApiService: HackerNewsApiService){}
-    
-    @Effect() loadStories$ = this.actions$
-        .ofType(stories.ActionTypes.LOAD_STORIES)
-        .switchMap((action)=> this.hackernewsApiService.retriveStories('news', 1))
-        .map(data => new stories.LoadStoriesCompleteAction(data));
+    @Effect() loadItemDetail$ = this.actions$
+        .ofType(itemDetail.ActionTypes.LOAD_ITEM_DETAIL)
+        .switchMap((action) => this.hackernewsApiService.retriveItemDetail(action.payload))
+        .map((data) => new itemDetail.LoadItemDetailCompleteAction(data));
 }
