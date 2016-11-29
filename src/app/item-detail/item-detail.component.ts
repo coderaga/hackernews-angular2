@@ -17,12 +17,12 @@ export class ItemDetailComponent implements OnInit {
               private store: Store<AppState>) 
   { 
     this.itemDetail = store.select("itemDetail");
-    this.store.select('itemDetail').map(
-        (itemDetail) => { 
-        console.log("Items details in constructore are:", this.itemDetail)
-        this.itemDetail = Observable.apply(itemDetail); 
-        }
-    );
+    // this.store.select('itemDetail').subscribe(
+    //     (itemDetail) => { 
+    //     console.log("Items details in constructore are:", itemDetail);
+    //     this.itemDetail = Observable.apply(itemDetail); 
+    //     }
+    // );
   }
 
   ngOnInit() {

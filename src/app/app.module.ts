@@ -34,6 +34,7 @@ import { ItemDetailEffect } from './effects/item-detail';
 // Services
 import { HackerNewsApiService } from './services/hacker-news-api.service';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -44,7 +45,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     FooterComponent,
     StoriesComponent,
     ItemComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

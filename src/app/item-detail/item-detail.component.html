@@ -1,3 +1,6 @@
-<p>
-  {{ itemDetail | async | json }}
-</p>
+<div *ngIf="(itemDetail | async)" class="container">
+  <a href="{{ (itemDetail | async).url }}" target="_blank">{{(itemDetail | async).title}}</a>
+  <p>
+    {{(itemDetail | async).points}} points by {{ (itemDetail | async).user }}  {{ (itemDetail | async).time_ago }} | <a [routerLink]="['/item', itemDetail.id]" routerLinkActive="active">{{(itemDetail | async).comments_count}} comments </a>
+  </p>
+</div>

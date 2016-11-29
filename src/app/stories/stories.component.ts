@@ -21,11 +21,11 @@ export class StoriesComponent implements OnInit {
               private route: ActivatedRoute,
               private store: Store<AppState>) {
       this.items$ = this.store.select('stories');
-      this.store.select('stories').map(
-        (stories) => {
-          this.items$ = Observable.apply(stories);
-        }
-      )
+      // this.store.select('stories').map(
+      //   (stories) => {
+      //     this.items$ = Observable.apply(stories);
+      //   }
+      // )
    }
 
   ngOnInit() {
